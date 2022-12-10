@@ -8,3 +8,4 @@ edition = "2021"
 [dependencies]
 utils = { path = "../utils/" }
 petgraph = "0.6.2"
+anyhow = "1.0.66"

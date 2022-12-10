@@ -4,6 +4,9 @@ use std::{
     str::FromStr,
 };
 
+use anyhow::Result;
+use utils::StringError;
+
 #[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord, Default)]
 struct Stack {
     letters: VecDeque<char>,
@@ -56,7 +59,7 @@ impl Stacks {
 }
 
 impl FromStr for Stacks {
-    type Err = &'static str;
+    type Err = StringError;
 
     fn from_str(input: &str) -> Result<Self, Self::Err> {
         let lines: Vec<&str> = input.lines().take_while(|line| !line.is_empty()).collect();
@@ -97,7 +100,7 @@ struct Movement {
 }
 
 impl FromStr for Movement {
-    type Err = &'static str;
+    type Err = StringError;
 
     fn from_str(input: &str) -> Result<Self, Self::Err> {
         let mut input = input
@@ -138,7 +141,7 @@ impl From<Vec<Movement>> for Movements {
 }
 
 impl FromStr for Movements {
-    type Err = &'static str;
+    type Err = StringError;
 
     fn from_str(input: &str) -> Result<Self, Self::Err> {
         let movements = input
@@ -154,7 +157,7 @@ impl FromStr for Movements {
     }
 }
 
-fn main() -> Result<(), String> {
+fn main() -> Result<()> {
     let input = utils::read_file()?;
 
     let mut stacks: Stacks = input.parse()?;

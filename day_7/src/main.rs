@@ -324,7 +324,7 @@ impl<'a> Iterator for Iter<'a> {
 // 3. Each dir node can have 0 or many children
 // 4. File nodes don't have any children
 
-fn main() -> Result<(), String> {
+fn main() -> anyhow::Result<()> {
     let input = utils::read_file()?;
 
     let mut fs = Filesystem::from_input(&input);

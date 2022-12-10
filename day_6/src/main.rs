@@ -1,6 +1,8 @@
 use std::collections::BTreeMap;
 
-fn main() -> Result<(), String> {
+use anyhow::Result;
+
+fn main() -> Result<()> {
     let input = utils::read_file()?;
 
     if let Some(index) = find_message_with_len(&input, 4) {
