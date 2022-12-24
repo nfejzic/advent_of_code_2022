@@ -1,7 +1,12 @@
 use std::{collections::BTreeMap, str::FromStr};
 
 use anyhow::Result;
-use petgraph::{algo, graph::NodeIndex, Directed, Graph};
+use petgraph::{
+    algo,
+    dot::{Config, Dot},
+    graph::NodeIndex,
+    Directed, Graph,
+};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord)]
 struct Position {
@@ -202,6 +207,10 @@ fn main() -> Result<()> {
             println!("Part 2 result = {min}");
         }
     }
+
+    let dot = Dot::with_config(&graph, &[Config::EdgeNoLabel, Config::NodeIndexLabel]);
+
+    println!("{dot:?}");
 
     Ok(())
 }
